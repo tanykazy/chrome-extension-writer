@@ -1,0 +1,26 @@
+{
+  "name": "Hello, World!",
+  "description": "",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "css": [],
+      "js": [
+        "content-script.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Hello World!",
+    "default_popup": "popup.html"
+  }
+}
