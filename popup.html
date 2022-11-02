@@ -2,19 +2,29 @@
 <html>
 
 <head>
-  <title>Hello, World!</title>
+  <title>Hello World!</title>
+  <meta charset="utf-8" />
 
-  <script src="third-party/codemirror-5.65.9/lib/codemirror.js"></script>
+  <link rel=stylesheet href="third-party/codemirror-5.65.9/doc/docs.css">
   <link rel="stylesheet" href="third-party/codemirror-5.65.9/lib/codemirror.css">
+  <link rel="stylesheet" href="third-party/codemirror-5.65.9/addon/dialog/dialog.css">
   <link rel="stylesheet" href="third-party/codemirror-5.65.9/theme/solarized.css">
-  <script src="third-party/codemirror-5.65.9/mode/javascript/javascript.js"></script>
+  <script src="third-party/codemirror-5.65.9/lib/codemirror.js"></script>
+  <script src="third-party/codemirror-5.65.9/addon/dialog/dialog.js"></script>
+  <script src="third-party/codemirror-5.65.9/addon/search/searchcursor.js"></script>
+  <script src="third-party/codemirror-5.65.9/addon/edit/matchbrackets.js"></script>
   <script src="third-party/codemirror-5.65.9/keymap/vim.js"></script>
 
   <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
-  <textarea id="editor"></textarea>
+
+  <!-- <form> -->
+    <textarea id="editor" name="editor">
+    </textarea>
+  <!-- </form> -->
+
   <script src="popup.js"></script>
 </body>
 
