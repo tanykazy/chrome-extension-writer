@@ -4,25 +4,44 @@
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [
-    "storage"
+    "storage",
+    "contextMenus"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": [
         "https://*/*",
         "http://*/*"
       ],
-      "css": [],
+      "css": [
+        "third-party/codemirror-5.65.9/lib/codemirror.css",
+        "third-party/codemirror-5.65.9/addon/dialog/dialog.css"
+      ],
       "js": [
+        "third-party/codemirror-5.65.9/lib/codemirror.js",
+        "third-party/codemirror-5.65.9/addon/dialog/dialog.js",
+        "third-party/codemirror-5.65.9/addon/search/searchcursor.js",
+        "third-party/codemirror-5.65.9/addon/edit/matchbrackets.js",
+        "third-party/codemirror-5.65.9/keymap/vim.js",
         "content-script.js"
       ]
     }
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "action": {
     "default_title": "Hello World!",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "newtab_search16.png",
+      "32": "newtab_search32.png"
+    }
+  },
+  "icons": {
+    "16": "newtab_search16.png",
+    "32": "newtab_search32.png",
+    "48": "newtab_search48.png",
+    "128": "newtab_search128.png"
   }
 }

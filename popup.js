@@ -1,5 +1,3 @@
-console.log(CodeMirror.version);
-
 CodeMirror.commands.save = function (editor) {
   chrome.storage.local.set({
     value: editor.doc.getValue(),
@@ -8,10 +6,10 @@ CodeMirror.commands.save = function (editor) {
   });
 };
 
-const textarea = window.document.getElementById('editor');
-const editor = CodeMirror.fromTextArea(textarea, {
+const editor = CodeMirror(window.document.getElementById('editor'), {
   matchBrackets: true,
   showCursorWhenSelecting: true,
+  scrollbarStyle: 'null',
   inputStyle: "contenteditable",
   theme: 'solarized dark',
   keyMap: 'vim',
@@ -20,14 +18,10 @@ const editor = CodeMirror.fromTextArea(textarea, {
   spellcheck: true,
   autocorrect: true,
 });
-editor.on('change', function (instance, changeObj) {
-  // console.log(instance);
-  // console.log(changeObj);
-});
 editor.setSize('100%', '100%');
 editor.refresh();
 editor.focus();
 
-chrome.storage.local.get('value', function (result) {
-  editor.doc.setValue(result.value);
+chrome.storage.local.get('value', function (items) {
+  editor.doc.setValue(items.value);
 });

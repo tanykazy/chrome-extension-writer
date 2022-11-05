@@ -1,41 +1,29 @@
-// console.log('content-script.js run!!');
+function onClicked(event) {
+    CodeMirror.commands.save = function (editor) {
+        editor.save();
+    };
 
-function onfocus(event) {
-    console.log('focus!!');
-    console.log(event);
+    CodeMirror.Vim.defineEx('quit', 'q', function (editor, params) {
+        editor.toTextArea();
+    });
 
-    const port = chrome.runtime.connect({
-        name: "knockknock"
+    const editor = CodeMirror.fromTextArea(event.target, {
+        matchBrackets: true,
+        showCursorWhenSelecting: true,
+        inputStyle: "contenteditable",
+        keyMap: 'vim',
+        lineWrapping: true,
+        lineNumbers: true,
+        spellcheck: true,
+        autocorrect: true,
     });
-    port.postMessage({
-        joke: "Knock knock"
-    });
-    port.onMessage.addListener(function (msg) {
-        console.log('content-script message listener!!');
-        console.log(msg);
-    });
+
+    editor.setSize('100%', '100%');
+    editor.refresh();
+    editor.focus();
 }
-
-const input = window.document.getElementsByTagName('input');
-// console.log(input);
-const textinput = [];
-for (const element of input) {
-    const type = element.getAttribute('type');
-    // console.log(type);
-
-    if (type === 'text') {
-        textinput.push(element);
-    }
-}
-// console.log(textinput);
 
 const textarea = window.document.getElementsByTagName('textarea');
-// console.log(textarea);
-
-for (const element of textinput) {
-    element.addEventListener('focus', onfocus);
-}
-
 for (const element of textarea) {
-    element.addEventListener('focus', onfocus);
+    element.addEventListener('click', onClicked);
 }
