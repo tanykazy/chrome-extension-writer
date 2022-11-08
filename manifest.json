@@ -17,15 +17,8 @@
         "http://*/*"
       ],
       "css": [
-        "third-party/codemirror-5.65.9/lib/codemirror.css",
-        "third-party/codemirror-5.65.9/addon/dialog/dialog.css"
       ],
       "js": [
-        "third-party/codemirror-5.65.9/lib/codemirror.js",
-        "third-party/codemirror-5.65.9/addon/dialog/dialog.js",
-        "third-party/codemirror-5.65.9/addon/search/searchcursor.js",
-        "third-party/codemirror-5.65.9/addon/edit/matchbrackets.js",
-        "third-party/codemirror-5.65.9/keymap/vim.js",
         "content-script.js"
       ]
     }
