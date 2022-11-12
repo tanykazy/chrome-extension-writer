@@ -1,9 +1,27 @@
-var require = { paths: { vs: 'third-party/node_modules/monaco-editor/min/vs' } };
+const require = { paths: { vs: 'third-party/node_modules/monaco-editor/min/vs' } };
 
-var editor = monaco.editor.create(document.getElementById('container'), {
+const editor = monaco.editor.create(document.getElementById('container'), {
   value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-  language: 'javascript'
+  language: 'javascript',
+  automaticLayout: true,
+  padding: {
+    top: 0,
+    bottom: 0,
+  },
+  theme: 'vs-dark'
 });
+
+editor.focus();
+
+// const containerDomNode = editor.getContainerDomNode();
+// console.log(containerDomNode);
+
+// const domNode = editor.getDomNode();
+// console.log(domNode);
+
+// const model = editor.getModel();
+// console.log(model);
+
 // CodeMirror.commands.save = function (editor) {
 //   chrome.storage.local.set({
 //     value: editor.doc.getValue(),
