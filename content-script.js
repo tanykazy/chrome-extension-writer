@@ -20,6 +20,17 @@ function onClicked(event) {
         autocorrect: true,
     });
 
+    editor.on('vim-command-done', function (editor, event) {
+        const registerController = CodeMirror.Vim.getRegisterController();
+        const register = registerController.getRegister(0);
+
+        navigator.clipboard.writeText(register).then(() => {
+            /* clipboard successfully set */
+        }, () => {
+            /* clipboard write failed */
+        });
+    });
+
     editor.setSize(rect.width, rect.height);
     editor.refresh();
     editor.focus();
