@@ -1,4 +1,6 @@
 function onClicked(event) {
+    const rect = event.target.getBoundingClientRect();
+
     CodeMirror.commands.save = function (editor) {
         editor.save();
     };
@@ -18,7 +20,7 @@ function onClicked(event) {
         autocorrect: true,
     });
 
-    editor.setSize('100%', '100%');
+    editor.setSize(rect.width, rect.height);
     editor.refresh();
     editor.focus();
 }
